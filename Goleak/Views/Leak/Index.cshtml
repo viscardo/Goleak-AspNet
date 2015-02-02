@@ -1,0 +1,146 @@
+@model Goleak.Infra.Models.Leak
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Goleaks</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="@Model.UserLeaked.FirstName @Model.UserLeaked.LastName foi explodida na goleak." />
+    <meta property="og:description" content="Algum amigo  do facebook de @Model.UserLeaked.FirstName falou alguma verdade sobre ele. Confira !" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.goleak.com" />
+    <meta property="og:image" content="@Model.UserLeaked.PicUrl" />
+    <meta property="og:site_name" content="Goleak.com" />
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42081748-1', 'goleak.com');
+        ga('send', 'pageview');
+
+    </script>
+    <body>
+        <!-- HEADER -->
+        <header class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <div class="span3">
+                                <a href="@Url.Content("~/Home/Index")" >
+                                    <img src="@Url.Content("~/Images/goleak.png")" style="width:50%; height:50%" />
+                                </a>
+                            </div>
+                            <div class="span9 text-left">
+                                <h2>Bemvindo a única rede social anônima.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- / HEADER -->
+
+        <div id="content-wrapper span8">
+            <!--//////////-->
+            <div style="float: left" class="articles-container">
+                <!--end article-single-->
+                <div class="comments-wrapper">
+                    <!-- You can start editing here. -->
+                    <div id="comments">
+                        <ol class="commentlist">
+                            <li id="comment-45395" class="comment even thread-even depth-1">
+                                <div id="li-comment-45395">
+                                    <div class="comment-author">
+                                        <div class="avatar-container">
+                                            <div class="avatar-wrap">
+                                                <div class="user-avatar">
+                                                    @if (Model.UserWrote.Gender.ToString().ToUpper() == "M")
+                                                    { 
+                                                        <img width="75" height="75" class="avatar avatar-75 photo" src="@Url.Content("~/Images/maleIcon.png")" alt="">
+                                                    }
+                                                    else if (Model.UserWrote.Gender.ToString().ToUpper() == "F")
+                                                    {
+                                                        <img width="75" height="75" class="avatar avatar-75 photo" src="@Url.Content("~/Images/femaleIcon.png")" alt="">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img width="75" height="75" class="avatar avatar-75 photo" src="@Url.Content("~/Images/question.jpg")" alt="">
+                                                    }
+                                                    <b></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="avatar-container">
+                                            <div class="avatar-wrap">
+                                                <div class="user-avatar">
+                                                    <img width="75" height="75" class="avatar avatar-75 photo" src="@Model.UserLeaked.PicUrl" alt="">
+                                                    <b></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end avatar container-->
+                                        <div class="data-container">
+                                            <h5>
+                                                <a href="@Url.Content("~/User/Profile/" + Model.UserLeaked.UserLink)">
+                                                    @Model.UserLeaked.FirstName @Model.UserLeaked.LastName
+                                                </a><span><a href="@Url.Content("~/User/Profile/" + Model.UserLeaked.UserLink)">@Model.CreatedOn.ToShortDateString()
+                                                    - @Model.CreatedOn.ToShortTimeString()</a> </span>
+                                            </h5>
+                                            <p>@Model.LeakText</p>
+                                            <div class="reply">
+                                                <div class="vote">
+                                                    <span class="rating positive">@Model.TrueLeaks</span> 
+                                                    <span class="rate like"><span title="Thumb up" class="btnLike icn_like" aria-hidden="true" data-id="@Model.Id">
+                                                    </span></span><span class="rating negative">@Model.FalseLeaks</span> <span class="rate unlike">
+                                                        <span title="Thumb down"  class="btnDislike icn_unlike" aria-hidden="true"  data-id="@Model.Id">
+                                                        </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both;">
+                                        </div>
+                                    </div>
+                                    <!--end comment-author-->
+                                </div>
+                            </li>
+                            <!-- #comment-## -->
+                        </ol>
+                        <!--end .commentlist-->
+                        <div class="navigation">
+                            <div class="fl">
+                            </div>
+                            <div class="fr">
+                            </div>
+                            <div class="fix">
+                            </div>
+                        </div>
+                        <!--end .navigation -->
+                    </div>
+                    <!--end #comments-->
+                    <!--end #respond -->
+                </div>
+                <!--end comments-wrapper-->
+            </div>
+            <!--end articles container-->
+            <div style="clear: both;">
+            </div>
+        </div>
+    </body>
+</html>

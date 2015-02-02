@@ -1,0 +1,34 @@
+@model Goleak.Infra.Models.Leak
+
+<li class="media">
+    @if (Model.UserWrote.Gender.ToString().ToUpper() == "M")
+    { 
+        <a class="pull-left" href="#">
+            <img class="media-object img-circle" src="@Url.Content("~/Images/maleIcon.png")"  alt=""/>
+        </a>
+    }
+    else if (Model.UserWrote.Gender.ToString().ToUpper() == "F")
+    {
+        <a class="pull-left" href="#">
+            <img class="media-object img-circle" src="@Url.Content("~/Images/femaleIcon.png")"  alt=""/>
+        </a>
+    }
+    else
+    {
+        <a class="pull-left" href="#">
+            <img class="media-object img-circle" src="@Url.Content("~/Images/question.png")"  alt=""/>
+        </a>
+    }
+    <div class="media-body">
+        <h4 class="media-heading">
+            <span class="badge-man">Someone</span> said about you.</h4>
+        <span>@Model.LeakText</span>
+        <div class="actions">
+            <a  class="btnLike"  data-id="@Model.Id">True</a> <span class="badge">@Model.TrueLeaks</span>
+            | <a  class="btnDislike"  data-id="@Model.Id">False</a> <span class="badge">@Model.FalseLeaks</span>
+            | <span>@Model.CreatedOn.ToShortDateString() - @Model.CreatedOn.ToShortTimeString()</span>
+        </div>
+    </div>
+</li>
+
+

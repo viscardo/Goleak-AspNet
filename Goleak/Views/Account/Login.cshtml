@@ -1,0 +1,274 @@
+﻿@model Goleak.Infra.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GoLeak</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta property="og:title" content="GOLEAK - Anonymous Network." />
+    <meta property="og:description" content="Say whatever your want about your friends from Facebook without them knowing." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.goleak.com" />
+    <meta property="og:image" content="http://www.goleak.com/Images/goleak.png" />
+    <meta property="og:site_name" content="Goleak.com" />
+
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="@Url.Content("~/Content/login/css/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/Content/login/css/stylish-portfolio.css")" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="@Url.Content("~/Content/login/font-awesome-4.1.0/css/font-awesome.min.css")" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42081748-1', 'goleak.com');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+
+    @*
+    <style type="text/css">
+        .press-it-btn { width: 150px; /* Specify width and height of the image. Height is value of each individual button graphic */ background-image: url(../Images/facebook_signin.png); /* Add the image as a background */ background-position: top; /* Set the position to the top */ text-indent: -9999px; /* Send the rendered HTML wording off screen */ outline: none; height: 25px; }
+            .press-it-btn:hover, #demo p a.press-it-btn:focus { background-position: center; /* Set the position to the center */ }
+            .press-it-btn:active { background-position: bottom; /* Set the position to the bottom */ }
+    </style>
+*@
+</head>
+<body>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=654799201201776";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn btn-lg toggle"><img src="@Url.Content("~/Images/goleak.png")" /></i></a>
+
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Friendly Network</h1>
+            <h3>Say whatever you want about your friends from Facebook without them knowing.</h3>
+            <br>
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+        </div>
+    </header>
+
+
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>How Goleak works</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-cloud fa-stack-1x text-primary"></i> 
+                                </span>
+                                <h4>
+                                    <strong>Write about your friends</strong>
+                                </h4>
+                                <p>Say to your facebook friends everything you have always wanted to say and you will never be identified. </p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                                </span>
+                                <h4>
+                                    <strong>Be anonymous</strong>
+                                </h4>
+                                <p>100% anonymous.</p>
+                                <p>If someone writes something about you, the only thing you can know is:</p>
+                                <p>- This person is for sure your facebook friend.</p>
+                                <p>- Man or Woman.</p>
+                               
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-flask fa-stack-1x text-primary"></i>
+                                </span>
+                                <h4>
+                                    <strong>Let's do a little ride</strong>
+                                </h4>
+                                <p>5 step tour to learn how GoLeak works.</p>
+                                <a href="@Url.Content("~/Tour/Step-1.htm")" class="btn btn-light">Click and Tour</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                                </span>
+                                <h4>
+                                    <strong>Give us a like</strong>
+                                </h4>
+                                <div class="fb-like" data-href="http://www.goleak.com/" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="false" data-send="false"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4>
+                        <strong>More about GoLeak</strong>
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-envelope-o fa-fw"></i>  <a href=" goleak@goleak.com"> goleak@goleak.com</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="@Url.Content("~/Terms/Index")">Terms</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/Home/About")">About Us</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/Home/Contact")">Contact</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/Tour/Step-1.htm")">Tour</a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; GoLeak</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    @Scripts.Render("~/bundles/jquery")
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="@Url.Content("~/Content/Login/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery-blockUI.js")"></script>
+    <script src="@Url.Content("~/Scripts/app.js")"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+        // Closes the sidebar menu
+        $("#menu-close").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Scrolls to the selected menu item on the page
+        $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnCreate").click(function () {
+                $.blockUI({ message:' <div> Wait a moment. </br> If it is your first time, it can take 5 minutes but it worth... </div>' });
+            });
+        });
+    </script>
+    @if (TempData["msg"] != null)
+    {
+        var msg = Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(TempData["msg"]));
+
+        TempData.Remove("msg");
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var notificacoes = @msg;
+                for (var i = 0, len = notificacoes.length; i < len; i++) {
+                    var notificacao = notificacoes[i];
+                    alert(notificacao.Texto);
+                    //ShowNoty(notificacao.Texto, notificacao.Tipo);
+                }
+            });
+        </script>
+    }
+</body>
+</html>
+
+
+
+
+
+
+

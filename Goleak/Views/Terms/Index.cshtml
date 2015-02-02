@@ -1,0 +1,151 @@
+﻿@model Goleak.Infra.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GoLeak</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta property="og:title" content="GOLEAK - Anonymous Network." />
+    <meta property="og:description" content="Say whatever your want about your friends from Facebook without them knowing." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.goleak.com" />
+    <meta property="og:image" content="http://www.goleak.com/Images/goleak.png" />
+    <meta property="og:site_name" content="Goleak.com" />
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42081748-1', 'goleak.com');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnCreate").click(function () {
+                $.blockUI({ message:' <div> Wait a moment. </br> If it is your first time, it can take 5 minutes but it worth... </div>' });
+            });
+        });
+    </script>
+    @if (TempData["msg"] != null)
+    {
+        var msg = Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(TempData["msg"]));
+
+        TempData.Remove("msg");
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var notificacoes = @msg;
+                for (var i = 0, len = notificacoes.length; i < len; i++) {
+                    var notificacao = notificacoes[i];
+                    alert(notificacao.Texto);
+                    //ShowNoty(notificacao.Texto, notificacao.Tipo);
+                }
+            });
+        </script>
+    }
+
+    <style type="text/css">
+        .press-it-btn {
+            width: 150px; /* Specify width and height of the image. Height is value of each individual button graphic */
+            background-image: url(../Images/facebook_signin.png); /* Add the image as a background */
+            background-position: top; /* Set the position to the top */
+            text-indent: -9999px; /* Send the rendered HTML wording off screen */
+            outline: none;
+            height: 25px;
+        }
+
+            .press-it-btn:hover, #demo p a.press-it-btn:focus {
+                background-position: center; /* Set the position to the center */
+            }
+
+            .press-it-btn:active {
+                background-position: bottom; /* Set the position to the bottom */
+            }
+    </style>
+</head>
+<body>
+
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=654799201201776";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="container">
+
+        <div class="masthead">
+            <span>
+                <img src="@Url.Content("~/Images/goleak.png")" />
+            </span>
+
+
+        </div>
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1>..:: GOLEAK TERMS ::..</h1>
+            
+            <p class="lead">Say whatever you want about your friends on Facebook without them ever knowing it was you.</p>
+            
+            <p>We are an anonymous network and we help you feel free to write anything you want about your friends on Facebook.</p>
+            
+            <p>We are not responsible for what you write about them, so please make sure that you do not offend any of your friends. Friendship is important in everyone's life.</p>
+            
+            <p>But if you don't care about this friendship anymore we suggest you remove this person from your facebook instead of offending them on the GoLeak network.</p>
+
+            <p>Offensives messages will be reviewed by our team and can be removed.</p>
+            
+            <p>We are working hard to prevent people from using our network to spread feelings of hatred, anger, disrespect or offend your feeling. </p>
+
+            <p>Your facebook is a public information and that is the reason your facebook information such as name and picture can be part of our network without your knowledge. </p>
+
+            <p>But if you do not want your facebook information to be part of our network we will be sad, but that is ok. You can go to settings and chose the option REMOVE MY PROFILE. But we love you and anytime you want to come back, just log into Goleak again and you will be very welcome. </p>
+
+            <p>If we are forced to  by the law, we can show the identity of who wrote the leak, so be nice when you decide to leak someone.</p>
+
+
+
+
+
+
+
+        </div>
+
+        <!-- Example row of columns -->
+        
+
+
+    </div>
+    <div class="panel-footer" style="text-align:center">
+        <a href="@Url.Content("~/Home/About")">About Us</a> -  <a href="@Url.Content("~/Home/Contact")">Contact</a> - <a href="@Url.Content("~/Tour/Step-1.htm")">Tour</a>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Goleak.Models.User">
+    <Position X="3.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAEAARCACAACAQQAAAAAAgEACAACCEAAAAAAAAAg=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Goleak.Models.Leak">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <AssociationLine Name="UserWrote" Type="Goleak.Models.User" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="2.088" />
+        <Point X="5" Y="2.088" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.12" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>kAACAEAAAABAAAAAAIBAACAAAIACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Leak.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserWrote" />
+      <Property Name="UserLeaked" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="LeakOpinions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Goleak.Models.LeakOpinion">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <AssociationLine Name="Leak" Type="Goleak.Models.Leak" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="5.329" />
+        <Point X="8.188" Y="5.329" />
+        <Point X="8.188" Y="3.508" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.12" Y="1.894" Height="0.182" Width="0.693" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAIAAAAgAAAACAEAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\LeakOpinion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Leak" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

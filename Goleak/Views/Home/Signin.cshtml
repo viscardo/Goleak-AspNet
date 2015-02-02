@@ -1,0 +1,201 @@
+﻿@model Goleak.Infra.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Goleaks</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/app")
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        
+        @Styles.Render("~/Content/bootstrap")
+        @Scripts.Render("~/bundles/bootstrap")
+
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-42081748-1', 'goleak.com');
+            ga('send', 'pageview');
+
+</script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#btnCreate").click(function () {
+                    $.blockUI({ message: '<h1><img src="busy.gif" /> Just a moment, it can take at least 5 minutes...</h1>' });
+                });
+            });
+        </script>
+            @if (TempData["msg"] != null)
+    {
+        var msg = Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(TempData["msg"]));
+
+        TempData.Remove("msg");
+			
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            
+                var notificacoes = @msg;
+				    for (var i = 0, len = notificacoes.length; i < len; i++) {
+				        var notificacao = notificacoes[i];
+				        alert(notificacao.Texto);
+				        //ShowNoty(notificacao.Texto, notificacao.Tipo);
+				    }
+				});
+        </script>
+    }
+    </head>
+<body>
+
+        <!-- HEADER -->
+        <header class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="container">
+                                <div class="span3">
+                                    <a href="@Url.Content("~/Home/Index")" >
+                                        <img src="@Url.Content("~/Images/goleak.png")" style="width:50%; height:50%" />
+                                    </a>
+                                </div>
+                                <div class="span9 text-right">
+                                     
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- / HEADER -->
+
+<div class="container">
+
+<div class="well">    
+
+ @using (Html.BeginForm("Signin", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+ {
+     @Html.HiddenFor(p=> p.Fb)
+		<legend>@Resources.Resources.ViewSignTitleFacebook<fb:login-button autologoutlink="true" perms="read_friendlists, user_photos, email, publish_stream"></fb:login-button></legend>		
+		<div class="control-group">
+	        <label class="control-label">@Html.LabelFor(p => p.FirstName)</label>
+			<div class="controls">
+			    <div class="input-prepend">
+				<span class="add-on"><i class="icon-user"></i></span>
+                    @Html.TextBoxFor(p => p.FirstName, new { @readonly = "readonly" })
+                    @Html.HiddenFor(p=> p.Fb)
+				</div>
+			</div>
+		</div>
+		<div class="control-group ">
+	        <label class="control-label">@Html.LabelFor(p => p.LastName)</label>
+			<div class="controls">
+			    <div class="input-prepend">
+				<span class="add-on"><i class="icon-user"></i></span>
+                    @Html.TextBoxFor(p => p.LastName, new { @readonly = "readonly" })
+
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+	        <label class="control-label">@Html.LabelFor(p => p.Email)</label>
+			<div class="controls">
+			    <div class="input-prepend">
+				<span class="add-on"><i class="icon-envelope"></i></span>
+					@Html.TextBoxFor(p => p.Email, new { @readonly = "readonly" })
+
+				</div>
+			</div>	
+		</div>
+		<div class="control-group">
+	        <label class="control-label">@Html.LabelFor(p => p.Gender)</label>
+			<div class="controls">
+			    
+					<p></p><div data-toggle="buttons-radio" class="btn-group">  
+                        @if (Model != null)
+                        {
+                            if(Model.Gender == "F")
+                            {
+                                <button class="btn btn-info active" id="gender" name="gender" required="required" type="button">@Resources.Resources.ViewSignFemale</button>  
+                            }
+                            else if (Model.Gender == "M")
+                            {
+                               <button class="btn btn-info active" id="gender" name="gender" required="required" type="button">@Resources.Resources.ViewSignMale</button>  
+                            }
+                            else
+                            {
+                                <button class="btn btn-info active" id="gender" name="gender" required="required" type="button">@Resources.Resources.ViewSignNoGender</button>
+                            }
+                        }
+                        else
+                        {
+                            <button class="btn btn-info active" id="gender" name="gender" required="required" type="button">@Resources.Resources.ViewSignNoGender</button>  
+                        }
+                  </div><p></p>
+				
+			</div>
+		</div>
+		<div class="control-group">
+	        <label class="control-label">@Html.LabelFor(p => p.Password)</label>
+			<div class="controls">
+			    <div class="input-prepend">
+				<span class="add-on"><i class="icon-lock"></i></span>
+                    @Html.EditorFor(p => p.Password)
+                     @Html.ValidationMessageFor(p => p.Password)
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+	        <label class="control-label">@Html.LabelFor(p => p.PasswordConfirm)</label>
+			<div class="controls">
+			    <div class="input-prepend">
+				<span class="add-on"><i class="icon-lock"></i></span>
+					@Html.EditorFor(p => p.PasswordConfirm)
+                     @Html.ValidationMessageFor(p => p.PasswordConfirm)
+				</div>
+			</div>
+		</div>
+		
+		<div class="control-group">
+		<label class="control-label"></label>
+	      <div class="controls">
+	       <button class="btn btn-success" id="btnCreate" type="submit">@Resources.Resources.ViewSignBtnCreateAccount</button>
+	       
+           <div id="fb-root"></div>
+	        <script src="@Url.Content("~/Scripts/Facebook.js")" type="text/javascript"></script>
+            <script type="text/javascript">
+		        $(function () {
+			        InitialiseFacebook(@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]);
+		        });
+            </script>
+
+	      </div>
+	
+	</div>
+	
+ }
+
+   </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+

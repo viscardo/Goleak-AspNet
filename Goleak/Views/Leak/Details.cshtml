@@ -1,0 +1,29 @@
+@model Goleak.Infra.Models.Leak
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Leak</legend>
+
+    <div class="display-label">UserWrote</div>
+    <div class="display-field">@(Model.UserWrote == null ? "None" : Model.UserWrote.Name)</div>
+
+    <div class="display-label">UserLeaked</div>
+    <div class="display-field">@(Model.UserLeaked == null ? "None" : Model.UserLeaked.Name)</div>
+
+    <div class="display-label">LeakText</div>
+    <div class="display-field">@Model.LeakText</div>
+
+    <div class="display-label">CreatedOn</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CreatedOn)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

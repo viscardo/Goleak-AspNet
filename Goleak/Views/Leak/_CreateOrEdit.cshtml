@@ -1,0 +1,42 @@
+@model Goleak.Infra.Models.Leak
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.LeakText)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.LeakText)
+    @Html.ValidationMessageFor(model => model.LeakText)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CreatedOn)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CreatedOn)
+    @Html.ValidationMessageFor(model => model.CreatedOn)
+</div>
+
+<div class="editor-label">
+    UserWrote
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.UserWroteId, ((IEnumerable<Goleak.Models.User>)ViewBag.PossibleUserWrote).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.UserWroteId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.UserWroteId)
+</div>
+<div class="editor-label">
+    UserLeaked
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.UserLeakedId, ((IEnumerable<Goleak.Models.User>)ViewBag.PossibleUserLeaked).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.UserLeakedId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.UserLeakedId)
+</div>

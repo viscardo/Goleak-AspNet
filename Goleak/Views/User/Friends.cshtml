@@ -1,0 +1,66 @@
+﻿@model Goleak.Models.User
+@{
+    ViewBag.Title = "Friends";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts
+{
+@*<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/noty/jquery.noty.js")"></script>*@
+    <script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/handlebars.js")"></script>
+    <script type="text/javascript" language="javascript" src="@Url.Content("~/ViewScripts/User/Friends.js")"></script>
+    <script id="templateItem" type="text/template">
+        {{#Classes}}
+             <a href="@Url.Content("~/User/Profile/{{UserLink}}")" class="span3" style="margin:10px;">
+                <div class="thumbnail">
+                    <img alt="" style="width: 50px; height: 50px;" src="{{PicUrl}}">
+                    <div class="caption">
+                    <h4>{{FirstName}} {{LastName}}</h4>
+                    <p>{{Leaks}} Leaks</p>
+                    </div>
+                </div>
+            </a>
+        {{/Classes}}
+    </script>
+}
+
+
+<div class="container-fluid" style="padding-top:10px; padding-bottom:10px; height:50px; line-height:50px; background-color:#eee;   border: 1px solid #888;   border-radius:3px;">
+    <div class="span2" style="width:50px; height:50px;">
+        <img src="@Model.PicUrl"  />
+    </div>
+    <div class="span8">
+        <p style="font-size:40px;" ><bold>@Model.FirstName @Model.LastName</bold></p>
+    </div>    
+</div>
+
+
+<div class="row-fluid" style="margin-top:10px;">
+
+    <div class="input-prepend">
+        <span class="add-on">Search Friends</span>
+        <input class="span10" id="prependedInput" type="text" placeholder="Type the friend name">
+        <input id="hdPageNumber" type="hidden"  value="0">
+    </div>
+
+
+    <div id="tabTodosItens" class="scroll">
+            <ul id="friendsList" class="thumbnails">
+
+            @foreach (Goleak.Models.User user in Model.Friends.OrderBy(p => p.FirstName).Take(25))
+            {
+                <a href="@Url.Content("~/User/Profile/"+user.UserLink)" class="span3" style="margin:10px;">
+                    <div class="thumbnail">
+                        <img alt="" style="width: 50px; height: 50px;" src="@user.PicUrl">
+                        <div class="caption">
+                        <h4>@user.FirstName @user.LastName</h4>
+                        <p>@user.Leaks.Count Leaks</p>
+                        </div>
+                    </div>
+                </a>
+            }
+
+             
+            </ul>
+    </div>
+
+ </div>

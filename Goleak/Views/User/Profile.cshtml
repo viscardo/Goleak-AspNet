@@ -1,0 +1,144 @@
+﻿@model Goleak.Infra.Models.User
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="@Url.Content("~/ViewScripts/User/Profile.js")" ></script>
+<h1>
+    <img src="http://graph.facebook.com/@Model.Fb/picture?type=normal" alt="" class="img-circle">
+    <span class="title">@Model.FirstName @Model.LastName</span>
+</h1>
+@if (!Model.Active)
+{
+    <h2>
+        <span class="subtitle">This user is no longer in Goleak NetWork</span>
+
+    </h2>
+}
+else
+{
+    if (!ViewBag.ItsMe)
+    {
+    <h2>
+        <span class="subtitle">Write something about it</span>
+
+    </h2>
+    <div>
+        <p>
+            <textarea class="form-control" rows="3" id="txtLeak"  data-id="@Model.Id"></textarea>
+        </p>
+        <p>
+            <button type="button" id="btnLeak" class="btn btn-default">
+                Say it!</button>
+        </p>
+    </div>
+
+    <h2>
+        <span class="subtitle">Leaks about @Model.FirstName</span>
+
+    </h2>
+    <br />
+    }
+    else
+    {
+    <h2>
+        <span class="subtitle">Leaks about me</span></h2>
+    }
+    <div id="feed">
+        <ul class="media-list">
+            @if (!ViewBag.ItsMe)
+            {
+                if (Model.Leaks.Count == 0)
+                {
+                <li class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <span class="badge-man">Be the first to say something about @Model.FirstName</span></h4>
+                    </div>
+                </li>
+                }
+                foreach (Goleak.Infra.Models.Leak leak in Model.Leaks.OrderByDescending(p => p.CreatedOn))
+                {
+
+                <li class="media">
+                    @if (leak.UserWrote.Gender.ToString().ToUpper() == "M")
+                    { 
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="@Url.Content("~/Images/maleIcon.png")"  alt=""/>
+                        </a>
+                    }
+                    else if (leak.UserWrote.Gender.ToString().ToUpper() == "F")
+                    {
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="@Url.Content("~/Images/femaleIcon.png")"  alt=""/>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="@Url.Content("~/Images/question.png")"  alt=""/>
+                        </a>
+                    }
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <span class="badge-man">Someone</span> said about @Model.FirstName.</h4>
+                        <span>@leak.LeakText</span>
+                        <div class="actions">
+                            <a href="#" class="btnLike"  data-id="@leak.Id">True</a> <span class="badge">@leak.TrueLeaks</span>
+                            | <a href="#" class="btnDislike"  data-id="@leak.Id">False</a> <span class="badge">@leak.FalseLeaks</span>
+                            | <span>@leak.CreatedOn.ToShortDateString() - @leak.CreatedOn.ToShortTimeString()</span>
+                        </div>
+                    </div>
+                </li>
+                }
+            }
+            else
+            {
+                if (Model.Leaks.Count == 0)
+                {
+                <li class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <span class="badge-man">Congratulations, You have no leak about you.</span></h4>
+                    </div>
+                </li>
+                }
+                foreach (Goleak.Infra.Models.Leak leak in Model.Leaks.OrderByDescending(p => p.CreatedOn))
+                {
+
+                <li class="media">
+                    @if (leak.UserWrote.Gender.ToString().ToUpper() == "M")
+                    { 
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="@Url.Content("~/Images/maleIcon.png")"  alt=""/>
+                        </a>
+                    }
+                    else if (leak.UserWrote.Gender.ToString().ToUpper() == "F")
+                    {
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="@Url.Content("~/Images/femaleIcon.png")"  alt=""/>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="@Url.Content("~/Images/question.png")"  alt=""/>
+                        </a>
+                    }
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <span class="badge-man">Someone</span> said about you.</h4>
+                        <span>@leak.LeakText</span>
+                        <div class="actions">
+                            <a href="#" class="btnLike"  data-id="@leak.Id">True</a> <span class="badge">@leak.TrueLeaks</span>
+                            | <a href="#" class="btnDislike"  data-id="@leak.Id">False</a> <span class="badge">@leak.FalseLeaks</span>
+                            | <span>@leak.CreatedOn.ToShortDateString() - @leak.CreatedOn.ToShortTimeString()</span>
+                        </div>
+                    </div>
+                </li>
+                }
+            }
+
+        </ul>
+    </div>
+}

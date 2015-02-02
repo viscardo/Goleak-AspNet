@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goleak", "Goleak\Goleak.csproj", "{0883DF78-06A7-489B-9830-75227CA2C742}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{313A9046-8E8D-4662-8BAE-C42D9084CBA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goleak.Infra", "Goleak.Infra\Goleak.Infra.csproj", "{7C7583C3-A151-490E-A857-1F2E38B9655A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9722B8DE-6D6D-4228-AF11-700D8B22961B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://cadmed.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Goleak\\Goleak.csproj
+		SccProjectName1 = Goleak
+		SccLocalPath1 = Goleak
+		SccProjectUniqueName2 = Resources\\Resources.csproj
+		SccProjectName2 = Resources
+		SccLocalPath2 = Resources
+		SccProjectUniqueName3 = Goleak.Infra\\Goleak.Infra.csproj
+		SccProjectName3 = Goleak.Infra
+		SccLocalPath3 = Goleak.Infra
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0883DF78-06A7-489B-9830-75227CA2C742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0883DF78-06A7-489B-9830-75227CA2C742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0883DF78-06A7-489B-9830-75227CA2C742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0883DF78-06A7-489B-9830-75227CA2C742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313A9046-8E8D-4662-8BAE-C42D9084CBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313A9046-8E8D-4662-8BAE-C42D9084CBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313A9046-8E8D-4662-8BAE-C42D9084CBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313A9046-8E8D-4662-8BAE-C42D9084CBA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7583C3-A151-490E-A857-1F2E38B9655A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7583C3-A151-490E-A857-1F2E38B9655A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7583C3-A151-490E-A857-1F2E38B9655A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7583C3-A151-490E-A857-1F2E38B9655A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

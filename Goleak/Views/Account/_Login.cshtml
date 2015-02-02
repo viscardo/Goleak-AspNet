@@ -1,0 +1,143 @@
+﻿@model Goleak.Infra.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GoLeak</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta property="og:title" content="GOLEAK - Anonymous Network." />
+    <meta property="og:description" content="Say whatever your want about your friends from Facebook without them knowing." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.goleak.com" />
+    <meta property="og:image" content="http://www.goleak.com/Images/goleak.png" />
+    <meta property="og:site_name" content="Goleak.com" />
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42081748-1', 'goleak.com');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnCreate").click(function () {
+                $.blockUI({ message:' <div> Wait a moment. </br> If it is your first time, it can take 5 minutes but it worth... </div>' });
+            });
+        });
+    </script>
+    @if (TempData["msg"] != null)
+    {
+        var msg = Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(TempData["msg"]));
+
+        TempData.Remove("msg");
+			
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var notificacoes = @msg;
+                for (var i = 0, len = notificacoes.length; i < len; i++) {
+                    var notificacao = notificacoes[i];
+                    alert(notificacao.Texto);
+                    //ShowNoty(notificacao.Texto, notificacao.Tipo);
+                }
+            });
+        </script>
+    }
+
+    <style type="text/css">
+        .press-it-btn { width: 150px; /* Specify width and height of the image. Height is value of each individual button graphic */ background-image: url(../Images/facebook_signin.png); /* Add the image as a background */ background-position: top; /* Set the position to the top */ text-indent: -9999px; /* Send the rendered HTML wording off screen */ outline: none; height: 25px; }
+            .press-it-btn:hover, #demo p a.press-it-btn:focus { background-position: center; /* Set the position to the center */ }
+            .press-it-btn:active { background-position: bottom; /* Set the position to the bottom */ }
+    </style>
+</head>
+<body>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=654799201201776";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="container">
+
+        <div class="masthead">
+            <span>
+                <img src="@Url.Content("~/Images/goleak.png")"/></span>
+
+
+        </div>
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1>Anonymous Network</h1>
+            <p class="lead">Say whatever you want about your friends from Facebook without them knowing.</p>
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+            <p>We will never post on your facebook.</p>
+        </div>
+
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-lg-3">
+                <h2>Write about your friends</h2>
+                <p>
+                    Say to your facebook friends everything you have always wanted to say and you will never be identified.
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <h2>Be anonymous</h2>
+                <p>100% anonymous.</p>
+                <p>If someone writes something about you, the only thing you can know is:</p>
+                <p>- This person is for sure your facebook friend.</p>
+                <p>- Man or Woman.</p>
+            </div>
+            <div class="col-lg-3">
+                <h2>Let's do a little ride</h2>
+                <p>5 step tour to learn how GoLeak works.</p>
+                <p class="text-center"><a href="@Url.Content("~/Tour/Step-1.htm")" class="btn btn-primary">Go Leak Tour </a></p>
+            </div>
+            <div class="col-lg-3">
+                <h2>Give us a like</h2>
+                <div class="fb-like" data-href="http://www.goleak.com/" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="box_count" data-action="like" data-show-faces="false" data-send="false"></div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="panel-footer" style="text-align:center">
+        <a href="@Url.Content("~/Terms/Index")">Terms</a> -        <a href="@Url.Content("~/Home/About")">About Us</a> -  <a href="@Url.Content("~/Home/Contact")">Contact</a> - <a href="@Url.Content("~/Tour/Step-1.htm")">Tour</a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

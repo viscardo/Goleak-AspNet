@@ -1,0 +1,109 @@
+
+.btn-facebook, .btn-facebook:hover
+{
+    background-color: #4c66a4;
+}
+
+.btnLike, .btnDislike {
+    cursor: pointer
+}
+
+#search-form
+{
+    width: 400px;
+}
+
+.form-group
+{
+    position: relative;
+}
+
+#search-result
+{
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    display: none;
+    overflow-y: scroll;
+    z-index: 1;
+}
+
+.nav-pills
+{
+    margin-top: 5px;
+}
+.nav-pills li.active a, .nav-pills li.active a:hover
+{
+    background-color: #073f6a;
+}
+
+.nav-pills li a
+{
+    color: #073f6a;
+}
+
+.main
+{
+    margin-top: 80px;
+}
+
+h1 span.title
+{
+    font-family: 'Oswald', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background-color: #073f6a;
+    padding: 10px 20px;
+    border-radius: 50px 50px 50px 0px;
+    font-size: 24px;
+}
+h1
+{
+    margin: 0;
+}
+h2
+{
+    margin-bottom: 40px;
+    margin-top: 5px;
+}
+h2 span.subtitle
+{
+    font-size: 16px;
+    color: #B5B5B3;
+}
+
+#feed li.media
+{
+    border-bottom: solid 1px #ccc;
+}
+
+#feed li.media .actions
+{
+    color: #B5B5B3;
+    padding-bottom: 10px;
+}
+
+#feed li.load-more
+{
+    text-align: center;
+}
+
+.media-body
+{
+    position: relative;
+}
+
+.badge-man
+{
+    /*border-bottom: solid 3px #2189C9;*/
+    color: #2189C9;
+}
+
+.badge-woman
+{
+    /*border-bottom: solid 3px #C948A0;*/
+    color: #C948A0;
+}
+

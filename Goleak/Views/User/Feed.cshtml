@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Goleak.Infra.Models.Leak>
+@{
+    ViewBag.Title = "Feed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="@Url.Content("~/ViewScripts/User/Profile.js")" ></script>
+<h1>
+    <span class="title">Feed</span></h1>
+<h2>
+    <span class="subtitle">The truth about your friends</span></h2>
+<div id="feed">
+    <ul class="media-list">
+        @foreach (Goleak.Infra.Models.Leak leak in Model)
+        {
+
+            <li class="media">
+                <a class="pull-left" href="@Url.Content("~/User/Profile/" + leak.UserLeaked.UserLink)">
+                    <img class="media-object img-circle" src="http://graph.facebook.com/@leak.UserLeaked.Fb/picture"  alt="">
+                </a>
+                <div class="media-body">
+                    @switch (leak.UserWrote.Gender.ToUpper())
+                    {
+                        case "M":
+                        <h4 class="media-heading">
+                            A man said about <a href="@Url.Content("~/User/Profile/" + leak.UserLeaked.UserLink)">@leak.UserLeaked.FirstName @leak.UserLeaked.LastName </a></h4>
+                            break;
+                        case "F":
+                        <h4 class="media-heading">
+                            A woman said about <a href="@Url.Content("~/User/Profile/" + leak.UserLeaked.UserLink)">@leak.UserLeaked.FirstName @leak.UserLeaked.LastName </a></h4>
+                            break;
+
+                        default:
+                        <h4 class="media-heading">
+                            Someone said about <a href="@Url.Content("~/User/Profile/" + leak.UserLeaked.UserLink)">@leak.UserLeaked.FirstName @leak.UserLeaked.LastName </a></h4>
+                            break;
+                    }
+                    <span>@leak.LeakText</span>
+                    <div class="actions">
+                        <a  class="btnLike"   data-id="@leak.Id">True</a> <span class="badge">@leak.TrueLeaks</span> | 
+                        <a  class="btnDislike"  data-id="@leak.Id" >False</a> <span class="badge">@leak.FalseLeaks</span> | <span>@leak.CreatedOn.ToShortDateString() - @leak.CreatedOn.ToShortTimeString()</span>
+                    </div>
+                </div>
+            </li>
+        }
+        @*<li class="load-more"><a href="#">load more</a></li>*@
+    </ul>
+</div>

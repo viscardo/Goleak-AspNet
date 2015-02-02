@@ -1,0 +1,29 @@
+﻿@model Goleak.Infra.Models.User
+@{
+    ViewBag.Title = "RemoveProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<h1>
+    <span class="title">@Model.FirstName @Model.LastName</span>
+    <img src="http://graph.facebook.com/@Model.Username/picture" alt="" class="img-circle">
+</h1>
+    
+    <h2>
+        <p>Do you really want to leave the Goleak Network</p>
+        <span class="subtitle">Your profile will not be show again for anyone.</span>
+    </h2>
+
+    @using(Html.BeginForm())
+    {
+    <div>
+
+            <button type="submit" id="btnLeak" class="btn btn-default">
+               Leave Now!</button>
+    </div>
+    }
+
+    <h2>
+        <span class="subtitle">If you want to come back, just log into Goleak Network.</span></h2>
+    <br />
+
+

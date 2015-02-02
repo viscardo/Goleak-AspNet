@@ -1,0 +1,32 @@
+@model Goleak.Infra.Models.Leak
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Leak</legend>
+
+    <div class="display-label">UserWrote</div>
+    <div class="display-field">@(Model.UserWrote == null ? "None" : Model.UserWrote.Name)</div>
+
+    <div class="display-label">UserLeaked</div>
+    <div class="display-field">@(Model.UserLeaked == null ? "None" : Model.UserLeaked.Name)</div>
+
+    <div class="display-label">LeakText</div>
+    <div class="display-field">@Model.LeakText</div>
+
+    <div class="display-label">CreatedOn</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CreatedOn)</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+
